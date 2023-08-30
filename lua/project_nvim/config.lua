@@ -16,6 +16,9 @@ M.defaults = {
   -- detection_methods
   patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json" },
 
+  -- Function to be called on project selected instead of the normal telescope find-file picker.
+  on_project_selected = nil,
+
   -- Table of lsp clients to ignore by name
   -- eg: { "efm", ... }
   ignore_lsp = {},
