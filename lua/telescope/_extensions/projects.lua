@@ -140,6 +140,9 @@ local function delete_project(prompt_bufnr)
 end
 
 local function select_project(prompt_bufnr)
+  if config.options.before_project_selected ~= nil then
+    config.options.before_project_selected()
+  end
   if config.options.on_project_selected == nil then
     find_project_files(prompt_bufnr)
     return
@@ -186,6 +189,7 @@ local function projects(opts)
         map("i", "<c-cr>", find_project_files)
 
         local on_project_selected = function()
+
           select_project(prompt_bufnr)
         end
         actions.select_default:replace(on_project_selected)
